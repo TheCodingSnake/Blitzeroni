@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Blitzeroni</string>
     <string name="image_Button_openSettings">Open Settings</string>
-    <string name="textView_CurrentSpeed">0 KMH</string>
+    <string name="textView_CurrentSpeed">:)</string>
 
     <string name="textView_settings_title">Settings</string>
     <string name="switch_Imperial_Units">Use Imperial Units</string>
