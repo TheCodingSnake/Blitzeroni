@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Blitzeroni</string>
+    <string name="image_Button_openSettings">Open Settings</string>
+    <string name="textView_CurrentSpeed">:)</string>
+
+    <string name="textView_settings_title">Settings</string>
+    <string name="switch_Imperial_Units">Use Imperial Units</string>
+    <string name="button_openGoogleMaps">Open Google Maps</string>
+    <string name="backToMain">Back to Main</string>
 </resources>
