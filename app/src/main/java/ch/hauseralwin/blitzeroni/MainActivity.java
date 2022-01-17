@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private ImageButton openSettings;
+    public boolean imperialUnit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +37,31 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            imperialUnit = extras.getBoolean("imperialUnit");
+            //The key argument here must match that used in the other activity
+        }
+
+
 }
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+
 
         TextView txt = (TextView) this.findViewById(R.id.textView_CurrentSpeed);
 
         if (location==null) {
             txt.setText("### KMH");
         } else {
-            float nCurrentSpeed = location.getSpeed();
+            double nCurrentSpeed = location.getSpeed();
+            nCurrentSpeed = nCurrentSpeed * 3.6; // change M/S to KMH
             txt.setText(nCurrentSpeed + " KMH");
+            if (imperialUnit) {
+                nCurrentSpeed = nCurrentSpeed / 1.6;
+                txt.setText(nCurrentSpeed + " MPH");
+            }
         }
 
     }

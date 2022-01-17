@@ -7,10 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Switch;
 
 public class SettingActivity extends AppCompatActivity {
     private ImageButton backToMain;
     private Button openGoogleMaps;
+    private Switch switchSpeedUnits;
+    public Boolean imperialUnit;
+
 
     // tested Uri. It works, but the App doesn't need it.
    // Uri gmmIntentUri = Uri.parse("google.streetview:cbll=46.414382,10.013988");
@@ -27,10 +31,17 @@ public class SettingActivity extends AppCompatActivity {
         openGoogleMaps = (Button) findViewById(R.id.button_openGoogleMaps);
         openGoogleMaps.setOnClickListener(v -> launchGoogleMaps());
 
+        switchSpeedUnits = (Switch) findViewById(R.id.switch_Imperial_Units);
+        switchSpeedUnits.setOnClickListener(v -> switchToImperial());
+    }
+
+    public boolean switchToImperial() {
+        return imperialUnit = true;
     }
 
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("imperialUnit", imperialUnit);
         startActivity(intent);
     }
 
