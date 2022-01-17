@@ -3,11 +3,18 @@ package ch.hauseralwin.blitzeroni;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class SettingActivity extends AppCompatActivity {
     private ImageButton backToMain;
+    private Button openGoogleMaps;
+
+    // tested Uri. It works, but the App doesn't need it.
+   // Uri gmmIntentUri = Uri.parse("google.streetview:cbll=46.414382,10.013988");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +24,20 @@ public class SettingActivity extends AppCompatActivity {
         backToMain = (ImageButton) findViewById(R.id.imageButton_backToMain);
         backToMain.setOnClickListener(v -> openMainActivity());
 
+        openGoogleMaps = (Button) findViewById(R.id.button_openGoogleMaps);
+        openGoogleMaps.setOnClickListener(v -> launchGoogleMaps());
+
     }
 
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void launchGoogleMaps() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setPackage("com.google.android.apps.maps"); // Uri as second parameter to launch Streetview.
+        startActivity(intent);
+    }
+
 }
