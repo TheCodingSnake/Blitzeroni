@@ -1,10 +1,9 @@
 package ch.hauseralwin.blitzeroni;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
-    private ImageButton openSettings;
     public boolean imperialUnit;
 
     @Override
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        openSettings = (ImageButton) findViewById(R.id.imageButton_openSettings);
+        ImageButton openSettings = findViewById(R.id.imageButton_openSettings);
         openSettings.setOnClickListener(v -> openSettingsActivity());
 
 
@@ -46,11 +44,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
 }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onLocationChanged(@NonNull Location location) {
+    public void onLocationChanged(Location location) {
 
 
-        TextView txt = (TextView) this.findViewById(R.id.textView_CurrentSpeed);
+        TextView txt = this.findViewById(R.id.textView_CurrentSpeed);
 
         if (location==null) {
             txt.setText("### KMH");

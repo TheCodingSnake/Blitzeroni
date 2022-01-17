@@ -1,12 +1,14 @@
 package ch.hauseralwin.blitzeroni;
 
 import android.location.Location;
-import android.location.LocationManager;
-
 
 public class PermanentRadarTrap {
 
-    Location location = new Location("Test");
+    //TODO: Save stationary radar traps
+    //TODO: Warn User with red circle when radar trap is nearby.
+
+
+    // Location location = new Location("Test");
 
 
 }

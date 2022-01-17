@@ -2,17 +2,15 @@ package ch.hauseralwin.blitzeroni;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
+// import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
 public class SettingActivity extends AppCompatActivity {
-    private ImageButton backToMain;
-    private Button openGoogleMaps;
-    private Switch switchSpeedUnits;
     public Boolean imperialUnit;
 
 
@@ -25,18 +23,19 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        backToMain = (ImageButton) findViewById(R.id.imageButton_backToMain);
+        ImageButton backToMain = findViewById(R.id.imageButton_backToMain);
         backToMain.setOnClickListener(v -> openMainActivity());
 
-        openGoogleMaps = (Button) findViewById(R.id.button_openGoogleMaps);
+        Button openGoogleMaps = findViewById(R.id.button_openGoogleMaps);
         openGoogleMaps.setOnClickListener(v -> launchGoogleMaps());
 
-        switchSpeedUnits = (Switch) findViewById(R.id.switch_Imperial_Units);
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
+        Switch switchSpeedUnits = findViewById(R.id.switch_Imperial_Units);
         switchSpeedUnits.setOnClickListener(v -> switchToImperial());
     }
 
-    public boolean switchToImperial() {
-        return imperialUnit = true;
+    public void switchToImperial() {
+        imperialUnit = true;
     }
 
     public void openMainActivity() {
